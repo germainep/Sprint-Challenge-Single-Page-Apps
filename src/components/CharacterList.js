@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ListGroup, ListGroupItem, Media } from 'reactstrap';
 
@@ -17,27 +18,27 @@ export default function CharacterList() {
   }, [setCharacters]);
   return (
     <ListGroup className="character-list">
-      <ListGroupItem>
-        {characters.map(character => (
-          <Media key={character.id}>
-            <Media left top href={character.url}>
-              <Media object src={character.image} />
-            </Media>
-            <Media body>
-              <Media heading>{character.name}</Media>
-              <div>
-                <span>species: </span>
-                {character.species}
-              </div>
-
-              <div>
-                <span>Home: </span>
-                {character.origin.name}
-              </div>
-            </Media>
+      {characters.map(character => (
+        <ListGroupItem key={character.id}>
+          <Media left>
+            <Media object src={character.image} />
           </Media>
-        ))}
-      </ListGroupItem>
+          <Media body>
+            <Media heading>
+              <Link to="/characters/:id">{character.name}</Link>
+            </Media>
+            <div>
+              <span>species: </span>
+              {character.species}
+            </div>
+
+            <div>
+              <span>Home: </span>
+              {character.origin.name}
+            </div>
+          </Media>
+        </ListGroupItem>
+      ))}
     </ListGroup>
   );
 }
