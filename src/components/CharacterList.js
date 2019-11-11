@@ -11,7 +11,7 @@ export default function CharacterList() {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
-      .get(`http://rickandmortyapi.com/api/character`)
+      .get(`https://rickandmortyapi.com/api/character`)
       .then(res => setCharacters(res.data.results))
       .catch(err => console.error(err));
   }, [setCharacters]);
@@ -20,7 +20,7 @@ export default function CharacterList() {
       <ListGroupItem>
         {characters.map(character => (
           <Media key={character.id}>
-            <Media left>
+            <Media left top href={character.url}>
               <Media object src={character.image} />
             </Media>
             <Media body>
