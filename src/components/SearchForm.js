@@ -6,7 +6,7 @@ export default function SearchForm() {
   return (
     <section className="search-form">
       <InputGroup>
-        <Input />
+        <Input type="text" name="search" onChange={event => handleChange(event)} />
         <InputGroupAddon addonType="prepend">
           <Button>Search</Button>
         </InputGroupAddon>
