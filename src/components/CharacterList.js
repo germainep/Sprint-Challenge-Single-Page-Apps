@@ -5,23 +5,13 @@ import axios from 'axios';
 import { ListGroup, ListGroupItem, Media } from 'reactstrap';
 import SearchForm from './SearchForm';
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
-  const [characters, setCharacters] = useState([]);
 
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    axios
-      .get(`https://rickandmortyapi.com/api/character`)
-      .then(res => setCharacters(res.data.results))
-      .catch(err => console.error(err));
-  }, [setCharacters]);
   return (
     <div>
-      <SearchForm />
       <ListGroup className="character-list">
-        {characters.map(character => (
+        {props.characters.map(character => (
           <ListGroupItem key={character.id}>
             <Media left>
               <Media object src={character.image} />

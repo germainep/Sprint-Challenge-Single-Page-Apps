@@ -2,16 +2,26 @@
 import React, { useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
-export default function SearchForm() {
+export default function SearchForm(props) {
   const [search, setSearch] = useState('');
+  const Characters = props.characters;
 
   const handleChange = event => {
-    setSearch({ ...search, [event.target.name]: event.target.value });
+    setSearch(event.target.value);
+
+    props.setCharacters(
+      Characters.filter(character => {
+        console.log(search);
+        if (character.name.toLowerCase().indexOf(search) !== -1) {
+          return character;
+        }
+      })
+    );
   };
   return (
     <section className="search-form">
       <InputGroup>
-        <Input type="text" name="search-field" onChange={event => handleChange(event)} />
+        <Input type="text" name="searchField" onChange={event => handleChange(event)} />
         <InputGroupAddon addonType="prepend">
           <Button>Search</Button>
         </InputGroupAddon>
