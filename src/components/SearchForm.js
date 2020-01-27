@@ -11,7 +11,6 @@ export default function SearchForm(props) {
 
     props.setCharacters(
       Characters.filter(character => {
-        console.log(search);
         if (character.name.toLowerCase().indexOf(search) !== -1) {
           return character;
         }

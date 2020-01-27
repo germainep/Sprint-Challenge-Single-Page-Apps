@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { ListGroup, ListGroupItem, Media } from 'reactstrap';
-import SearchForm from './SearchForm';
 
 export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
